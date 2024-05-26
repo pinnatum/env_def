@@ -11,6 +11,8 @@ module "vpc" {
   subnet_cidr_blocks = ["10.0.0.0/20", "10.0.16.0/20"]
 }
 
-output vpc {
-    value = module.vpc.vpc_id
+module "ec2" {
+  source = "/Users/Siddu/Documents/D_O_C_S/SourceCode/pinnatum/terraform_modules/aws-ec2"
+  resource_name = "siddu-dev-eu-west-2"
+  subnet_id = module.vpc.subnet_ids[0]
 }
